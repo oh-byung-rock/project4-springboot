@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<style>
+    .form-group .form-control {
+        width: 15%; /* 원하는 너비로 조정 */
+        margin: 0 auto; /* 중앙 정렬 */
+        margin-bottom: 15px; /* 입력란 사이의 간격 */
+    }
+    .logo-container {
+        display: flex;
+        justify-content: center; /* 로고 중앙 정렬 */
+    }
+    button{
+        background-image: url('/images/order.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border: none;
+        color: transparent; /* 버튼 내 텍스트 보이지 않도록 설정 */
+        width: 140px;
+        height: 35px;
+    }
+    .logo2 {
+        display: block;
+        width: 250px;
+        height: 128px;
+        background-image: url('/images/orderlogo.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+</style>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div class="jumbotron">
+    <div class="logo-container">
+        <a href="/" class="logo2"></a>
+    </div>
+    <form role="form" action="/order" method="post">
+        <input type="hidden" name="memberId" th:value="${session.memberId}" class="form-group"/>
+        <div class="form-group">
+            <select name="itemId" id="item" class="form-control">
+                <option value="">상품선택</option>
+                <option th:each="item : ${items}"
+                        th:value="${item.id}"
+                        th:text="${item.name}" />
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input type="number" name="count" class="form-control" id="count" placeholder="주문 수량을 입력하세요">
+        </div>
+        <div class="form-button">
+            <button type="submit" >Submit</button>
+        </div>
+    </form>
+    </div>
+
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>

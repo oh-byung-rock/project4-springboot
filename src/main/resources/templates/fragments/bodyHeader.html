@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="header" th:fragment="bodyHeader">
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;  /* 항목을 좌우 양끝에 위치 */
+            align-items: center;
+        }
+        .logo {
+            display: block;
+            width: 250px;
+            height: 128px;
+            background-image: url('/images/machalogo.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+        .nav {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            padding: 0;
+        }
+        .log-icon {
+            width: 140px;
+            height: 35px;
+            margin-left: 20px;
+        }
+    </style>
+    <a href="/" class="logo"></a>
+    <ul class="nav nav-pills">
+        <li th:if="${session.member == null}"><a href="/login"><img src="/images/login2.png" alt="로그인" class="log-icon"></a></li>
+        <li th:if="${session.member != null}"><a th:text="${session.member.name} + '님 환영합니다!'"></a></li>
+        <li th:if="${session.member != null}"><a href="/logout"><img src="/images/logout2.png" alt="로그아웃" class="log-icon"></a></li>
+    </ul>
+</div>
+</html>

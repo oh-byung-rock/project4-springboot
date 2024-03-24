@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div class="jumbotron">
+        <img style="width:776px; height:200px; position: relative; left: -329px;" src="/images/main1.png"/>
+        <p>
+            <a style="width:163px; height:200px; position: relative; left:-360px;" href="/mandalart">
+                <img th:if="${session?.member != null}" src="/images/menu1.png"/>
+            </a>
+            <a style="width:163px; height:200px; position: relative; left:-314px;">
+                <img th:unless="${session?.member != null}" src="/images/white2.png"/>
+            </a>
+
+            <a style="width:163px; height:200px; position: relative; left:-360px;" href="/items">
+                <img th:if="${session?.member != null}" src="/images/menu5.png"/>
+            </a>
+            <a style="width:163px; height:200px; position: relative; left:-360px;">
+                <img th:unless="${session?.member != null}" src="/images/white.png"/>
+            </a>
+
+            <a style="width:163px; height:200px; position: relative; left:-360px;" href="/items/new">
+                <img th:if="${session?.member != null and session.role.name() == 'ADMIN'}" src="/images/menu3.png" />
+            </a>
+            <a style="width:163px; height:200px; position: relative; left:-360px;">
+                <img th:unless="${session?.member != null and session.role.name() == 'ADMIN'}" src="/images/white.png"/>
+            </a>
+        </p>
+        <p>
+            <a style="width:163px; height:200px; position: relative; top: -20px; left: -487px;" href="/order">
+                <img th:if="${session?.member != null}" src="/images/menu2.png"/>
+            </a>
+            <a style="width:163px; height:200px; position: relative; top: -20px; left: -487px;">
+                <img th:unless="${session?.member != null}" src="/images/white.png"/>
+            </a>
+
+            <a style="width:163px; height:200px; position: relative; top: -20px; left: -487px;" href="/orders">
+                <img th:if="${session?.member != null}" src="/images/menu4.png"/>
+            </a>
+            <a style="width:163px; height:200px; position: relative; top: -20px; left: -487px;">
+                <img th:unless="${session?.member != null}" src="/images/white.png"/>
+            </a>
+        </p>
+    </div>
+
+</div> <!-- /container -->
+</body>
+<div th:replace="fragments/footer :: footer" />
+</html>

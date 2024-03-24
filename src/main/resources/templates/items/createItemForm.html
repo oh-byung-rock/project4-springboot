@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<style>
+    .logo-container {
+        display: flex;
+        justify-content: center; /* 로고 중앙 정렬 */
+    }
+    .logo5 {
+        display: block;
+        width: 250px;
+        height: 128px;
+        background-image: url('/images/pluslogo.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    .form-group .form-control {
+        width: 15%; /* 원하는 너비로 조정 */
+        margin: 0 auto; /* 중앙 정렬 */
+        margin-bottom: 15px; /* 입력란 사이의 간격 */
+    }
+    button{
+        background-image: url('/images/plusitem.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border: none;
+        color: transparent; /* 버튼 내 텍스트 보이지 않도록 설정 */
+        width: 140px;
+        height: 35px;
+    }
+    .form-button {
+        display: flex; /* 플렉스박스 사용 */
+        justify-content: center; /* 버튼을 가로축 중앙에 정렬 */
+    }
+</style>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div class="jumbotron">
+    <div class="logo-container">
+        <a href="/" class="logo5"></a>
+    </div>
+    <form th:action="@{/items/new}" th:object="${bookform}" method="post">
+        <div class="form-group">
+            <input type="text" th:field="*{name}" class="form-control" placeholder="상품명을 입력하세요">
+        </div>
+        <div class="form-group">
+            <input type="number" th:field="*{price}" class="form-control" placeholder="가격을 입력하세요">
+        </div>
+        <div class="form-group">
+            <input type="number" th:field="*{stockQuantity}" class="form-control" placeholder="수량을 입력하세요">
+        </div>
+        <div class="form-group">
+            <input type="text" th:field="*{brand}" class="form-control" placeholder="브랜드를 입력하세요">
+        </div>
+        <div class="form-button">
+            <button type="submit" >Submit</button>
+        </div>
+    </form>
+    </div>
+    <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>

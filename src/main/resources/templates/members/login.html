@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" >
+    <title>Login</title>
+</head>
+<body>
+<style>
+    .form-group .form-control {
+        width: 15%; /* 원하는 너비로 조정 */
+        margin: 0 auto; /* 중앙 정렬 */
+        margin-bottom: 15px; /* 입력란 사이의 간격 */
+    }
+    .form-button {
+        display: flex; /* 플렉스박스 사용 */
+        justify-content: center; /* 버튼을 가로축 중앙에 정렬 */
+    }
+    .logo-container {
+        display: flex;
+        justify-content: center; /* 로고 중앙 정렬 */
+    }
+    .logo {
+        display: block;
+        width: 250px;
+        height: 128px;
+        background-image: url('/images/machalogo.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+    }
+    button{
+        background-image: url('/images/login2.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border: none;
+        color: transparent; /* 버튼 내 텍스트 보이지 않도록 설정 */
+        width: 140px;
+        height: 35px;
+    }
+    .signup{
+        background-image: url('/images/singup.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border: none;
+        color: transparent; /* 버튼 내 텍스트 보이지 않도록 설정 */
+        width: 140px;
+        height: 35px;
+        margin-top: 15px;
+    }
+</style>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div class="jumbotron">
+    <form th:action="@{/login}" method="post">
+        <div class="logo-container">
+            <a href="/" class="logo"></a>
+        </div>
+        <div class="form-group">
+            <input type="text" id="userid" name="userid" class="form-control" required placeholder="아이디를 입력하세요"/>
+        </div>
+        <div class="form-group">
+            <input type="password" id="userpw" name="userpw" class="form-control" required placeholder="비밀번호를 입력하세요"/>
+        </div>
+        <div class="form-button">
+            <button type="submit" >Login</button>
+        </div>
+        <div class="form-button">
+            <a href="/members/new" class="signup">회원 가입</a>
+        </div>
+
+    </form>
+    </div>
+    </div>
+    <div th:replace="fragments/footer :: footer" />
+</div>
+</body>
+</html>

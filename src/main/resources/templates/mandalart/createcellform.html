@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <form th:action="@{/mandalart/new}" th:object="${cellForm}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div class="form-group">
+            <label for="content">내용</label>
+            <input type="text" id="content" name="content" class="form-control" placeholder="내용을 입력하세요">
+        </div>
+        <button type="submit" class="btn btn-primary">저장</button>
+    </form>
+    <div th:replace="fragments/footer :: footer" />
+</div>
+</body>
+</html>

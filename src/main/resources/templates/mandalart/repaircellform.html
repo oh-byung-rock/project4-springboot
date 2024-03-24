@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <form th:action="@{/mandalart/{id}/repair(id=${cellForm.id})}" th:object="${cellForm}" method="post">
+        <input type="hidden" th:field="*{id}" />
+        <div class="form-group">
+            <label for="content">내용</label>
+            <input type="text" id="content" name="content" class="form-control">
+        </div>
+        <button type="submit" name="action" value="update" class="btn btn-primary">수정</button>
+        <div th:if="${not #strings.isEmpty(cellForm.content)}">
+        <button type="submit" name="action" value="complete" class="btn btn-success">완료</button>
+        <button type="submit" name="action" value="fail" class="btn btn-danger">실패</button>
+        </div>
+    </form>
+    <div th:replace="fragments/footer :: footer" />
+</div>
+</body>
+</html>
