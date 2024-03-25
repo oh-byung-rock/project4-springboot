@@ -26,5 +26,4 @@ public class Member {
     // 일대다 관계이며, member라는 필드를 통해 매핑 관계를 접근할수있다.
     private List<Order> orders = new ArrayList<>();
     // 일대다 관계에서 한명의 회원(member)이 많은 주문(order)을 할수있기에 list로 선언한다.
-
 }

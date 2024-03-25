@@ -21,6 +21,7 @@ public class DataInitializer {
     //    @PostConstruct : 코드를 실행할때마다 Cell 앤티티의 row, column, contents 를 초기화
     @PostConstruct
     public void initData() {
+
         long count = cellRepository.count();
         System.out.println("Cell count: " + count);
 

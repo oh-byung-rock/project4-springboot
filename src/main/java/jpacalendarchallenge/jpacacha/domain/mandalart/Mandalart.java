@@ -1,6 +1,7 @@
 package jpacalendarchallenge.jpacacha.domain.mandalart;
 
 import jakarta.persistence.*;
+import jpacalendarchallenge.jpacacha.domain.Member;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.ArrayList;
@@ -15,6 +16,10 @@ public class Mandalart {
 
     @OneToMany(mappedBy = "mandalart")
     private List<Cell> cells = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     public Mandalart() {}
 
