@@ -17,7 +17,7 @@ public class Member {
 
     private String name;
 
-    @Embedded // 관련 있는 필드들을 묶어서 관리 , '시','동','면'같은걸 '주소'라는 하나의 단위로 관리
+    @Embedded
     private Address address;
 
     @Enumerated(EnumType.STRING)

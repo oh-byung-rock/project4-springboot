@@ -37,12 +37,12 @@ public class MemberController {
         return "redirect:/"; // 첫번째 페이지로 넘어간다.
     }
 
-    @GetMapping(value = "/members")
-    public String list(Model model) {
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
-        return "members/memberList";
-    }
+//    @GetMapping(value = "/members")
+//    public String list(Model model) {
+//        List<Member> members = memberService.findMembers();
+//        model.addAttribute("members", members);
+//        return "members/memberList";
+//    }
 
 //    @GetMapping(value = "/mandalart")
 //    public String mandalart(Model model) {
