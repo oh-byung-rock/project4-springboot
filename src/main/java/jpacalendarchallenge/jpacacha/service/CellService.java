@@ -30,9 +30,9 @@ public class CellService {
         return cellRepository.findById(id);
     }
 
-
     @Transactional
     public void updateCellStatus(Long id, CellStatus status) {
+        System.out.println("Cell count: " + id);
         Cell cell = cellRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Cell not found with id: " + id));
 
@@ -72,5 +72,9 @@ public class CellService {
             cell.setContent(newContent);
             cellRepository.save(cell);
         }
+    }
+
+    public List<Cell> findCellsByMandalartId(Long mandalartId) {
+        return cellRepository.findByMandalartId(mandalartId);
     }
 }

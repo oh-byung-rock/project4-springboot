@@ -17,10 +17,6 @@ public class Mandalart {
     @OneToMany(mappedBy = "mandalart")
     private List<Cell> cells = new ArrayList<>();
 
-    @OneToOne
-    @JoinColumn(name = "member_id")
-    private Member member;
-
     public Mandalart() {}
 
     // 연관관계 메소드
@@ -28,4 +24,8 @@ public class Mandalart {
         cells.add(cell);
         cell.setMandalart(this);
     }
+
+    @OneToOne
+    @JoinColumn(name = "member_id") // 외래 키 관리
+    private Member member;
 }
