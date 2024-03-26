@@ -1,8 +1,11 @@
 package jpacalendarchallenge.jpacacha.controller;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.servlet.http.HttpSession;
+import jpacalendarchallenge.jpacacha.domain.Member;
 import jpacalendarchallenge.jpacacha.domain.mandalart.Cell;
 import jpacalendarchallenge.jpacacha.domain.mandalart.CellStatus;
+import jpacalendarchallenge.jpacacha.domain.mandalart.Mandalart;
 import jpacalendarchallenge.jpacacha.service.CellService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,8 +21,11 @@ public class CellController {
     private final CellService cellService;
 
     @GetMapping(value = "/mandalart")
-    public String viewMandalart(Model model) {
-        List<Cell> cells = cellService.findAllCells(); // 모든 셀 조회
+    public String viewMandalart(Model model, HttpSession session) {
+        Long memberId = (Long) session.getAttribute("memberId");
+        System.out.println("memberidsms: " + memberId);
+        List<Cell> cells = cellService.findCellsByMandalartId(memberId);
+//        List<Cell> cells = cellService.findAllCells(); // 모든 셀 조회
 
         // 9x9 그리드에 맞게 셀 데이터 구조화
         Cell[][] grid = new Cell[9][9];

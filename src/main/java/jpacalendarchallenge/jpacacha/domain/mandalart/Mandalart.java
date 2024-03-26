@@ -1,6 +1,7 @@
 package jpacalendarchallenge.jpacacha.domain.mandalart;
 
 import jakarta.persistence.*;
+import jpacalendarchallenge.jpacacha.domain.Member;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.ArrayList;
@@ -23,4 +24,8 @@ public class Mandalart {
         cells.add(cell);
         cell.setMandalart(this);
     }
+
+    @OneToOne
+    @JoinColumn(name = "member_id") // 외래 키 관리
+    private Member member;
 }

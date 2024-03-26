@@ -1,6 +1,7 @@
 package jpacalendarchallenge.jpacacha.domain;
 
 import jakarta.persistence.*;
+import jpacalendarchallenge.jpacacha.domain.mandalart.Mandalart;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,4 +28,6 @@ public class Member {
     private List<Order> orders = new ArrayList<>();
     // 일대다 관계에서 한명의 회원(member)이 많은 주문(order)을 할수있기에 list로 선언한다.
 
+    @OneToOne(mappedBy = "member") // Mandalart 엔티티의 member 필드를 참조
+    private Mandalart mandalart;
 }

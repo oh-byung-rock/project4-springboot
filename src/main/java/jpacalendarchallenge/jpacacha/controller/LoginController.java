@@ -1,5 +1,6 @@
 package jpacalendarchallenge.jpacacha.controller;
 
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jpacalendarchallenge.jpacacha.Jwt;
 import jpacalendarchallenge.jpacacha.domain.Member;
