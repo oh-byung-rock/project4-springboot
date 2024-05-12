@@ -8,7 +8,6 @@ import jakarta.persistence.*;
 @Getter
 public class Address {
 
-    @Column(unique = true)
     private String userid;
 
     private String userpw;

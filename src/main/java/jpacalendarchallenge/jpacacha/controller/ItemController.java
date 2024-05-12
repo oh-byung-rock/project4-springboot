@@ -56,15 +56,23 @@ public class ItemController {
         return "items/updateitemForm";
     }
 
-    @PostMapping(value = "/items/{itemId}/edit")
-    public String updateItem(@ModelAttribute("form") BookForm form) {
-        Book book = new Book();
-        book.setId(form.getId());
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setBrand(form.getBrand());
-        itemService.saveItem(book);
-        return "redirect:/items";
-    }
+//    @PostMapping(value = "/items/{itemId}/edit")
+//    public String updateItem(@ModelAttribute("form") BookForm form) {
+//        Book book = new Book();
+//        book.setId(form.getId());
+//        book.setName(form.getName());
+//        book.setPrice(form.getPrice());
+//        book.setStockQuantity(form.getStockQuantity());
+//        book.setBrand(form.getBrand());
+//        itemService.saveItem(book);
+//        return "redirect:/items";
+//    }
+
+//    240407
+@PostMapping(value = "/items/{itemId}/edit")
+public String updateItem(@PathVariable Long itemId, @ModelAttribute("form") BookForm form) {
+    itemService.updateItem(itemId, form); // 서비스 메서드 호출
+    return "redirect:/items";
+}
+
 }

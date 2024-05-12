@@ -1,18 +1,25 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/jpacacha;DB_CLOSE_ON_EXIT=FALSE
-#    url: jdbc:h2:file:~/jpacacha;DB_CLOSE_ON_EXIT=FALSE
-#    ㄴ h2 콘솔에 db가 안날아가게 하고싶은경우
-    username : sa
-    password :
-    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    각자 PC에 만들어놓은 Database이름을 써야 합니다.
+    url: jdbc:mysql://localhost:3306/macha?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    #    mysql에 생성한 사용자 계정 정보를 써야 합니다.
+    username: macha_user
+    password: aakrwlak384
+  thymeleaf:
+    cache: false
 
-  jpa :
-    hibernate :
+  jpa:
+    hibernate:
       ddl-auto: update
-#      ddl-auto 를 create으로 하면 코드 돌릴때마다 h2 console이 초기화됨
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     properties:
       hibernate:
+        show_sql: true
         format_sql: true
 
 logging.level:

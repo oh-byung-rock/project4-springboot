@@ -1,8 +1,10 @@
 package jpacalendarchallenge.jpacacha.service;
 
+import jpacalendarchallenge.jpacacha.domain.item.Book;
 import org.springframework.transaction.annotation.Transactional;
 import jpacalendarchallenge.jpacacha.domain.item.Item;
 import jpacalendarchallenge.jpacacha.repository.ItemRepository;
+import jpacalendarchallenge.jpacacha.controller.BookForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,20 @@ public class ItemService {
     public void saveItem(Item item) {
         itemRepository.save(item);
     }
+
+//    240407
+@Transactional
+    public void updateItem(Long itemId, BookForm form) {
+        Item item = itemRepository.findOne(itemId); // 엔티티 조회
+            Book book = (Book) item;
+            book.setName(form.getName());
+            book.setPrice(form.getPrice());
+            book.setStockQuantity(form.getStockQuantity());
+//            book.setBrand(form.getBrand());
+            // 변경 감지 기능으로 인해 데이터베이스에 자동 반영
+    }
+
+
     public List<Item> findItems() {
         return itemRepository.findAll();
     }

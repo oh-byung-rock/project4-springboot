@@ -42,7 +42,7 @@
     <div class="logo-container">
         <a href="/" class="logo5"></a>
     </div>
-    <form th:object="${form}" method="post">
+    <form id="updateForm" th:object="${form}" method="post">
         <!-- id -->
         <input type="hidden" th:field="*{id}" />
         <div class="form-group">
@@ -58,11 +58,40 @@
             <input type="text" th:field="*{brand}" class="form-control" placeholder="브랜드를 입력하세요" />
         </div>
         <div class="form-button">
-            <button type="submit" >update</button>
+            <button type="submit" value="update">update</button>
         </div>
     </form>
     </div>
     <div th:replace="fragments/footer :: footer" />
 </div>
+<script>
+    document.getElementById('updateForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // 폼의 기본 제출 방지
+
+        const formData = new FormData(event.target);
+        const data = {
+            id: formData.get('id'),  // hidden input에서 id 값을 가져옵니다.
+            name: formData.get('name'),
+            price: parseInt(formData.get('price'), 10),
+            stockQuantity: parseInt(formData.get('stockQuantity'), 10),
+        };
+
+        fetch(`/api/ver2/updateitem/${data.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert('상품 업데이트가 완료되었습니다.');
+            window.location.href = '/'; // 성공시 홈페이지로 리디렉션
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('상품 업데이트 실패');
+        });
+    });
+</script>
 </body>
 </html>

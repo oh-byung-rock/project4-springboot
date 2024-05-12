@@ -1,6 +1,7 @@
 package jpacalendarchallenge.jpacacha.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import jpacalendarchallenge.jpacacha.domain.mandalart.Mandalart;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ public class Member {
     @Column(name = "member_id")  //  ▲ 회원테이블명을 member_id가 되도록
     private Long id;
 
+    @NotEmpty
     private String name;
 
     @Embedded
