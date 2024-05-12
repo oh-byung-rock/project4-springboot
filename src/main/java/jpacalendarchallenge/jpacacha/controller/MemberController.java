@@ -23,26 +23,26 @@ public class MemberController {
     }
 
     @PostMapping(value = "/members/new") // PostMapping : "/members/new" 주소로 POST 요청 ( 입력한 데이터를 DB에 전송 )
-    public String create(@Valid MemberForm form, BindingResult result,@RequestParam(name = "action") String action) {
+    public String create(@Valid MemberForm form, BindingResult result,@RequestParam(name = "action", required = false) String action) {
         if (result.hasErrors()) {
             return "members/createMemberForm";
         }
-        if ("save".equals(action)){
-            Address address = new Address(form.getUserid(), form.getUserpw());
-            Member member = new Member();
-            member.setName(form.getName());
-            member.setAddress(address);
-            memberService.join(member);
-        }
+//        if ("save".equals(action)){
+//            Address address = new Address(form.getUserid(), form.getUserpw());
+//            Member member = new Member();
+//            member.setName(form.getName());
+//            member.setAddress(address);
+//            memberService.join(member);
+//        }
         return "redirect:/"; // 첫번째 페이지로 넘어간다.
     }
 
-    @GetMapping(value = "/members")
-    public String list(Model model) {
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("members", members);
-        return "members/memberList";
-    }
+//    @GetMapping(value = "/members")
+//    public String list(Model model) {
+//        List<Member> members = memberService.findMembers();
+//        model.addAttribute("members", members);
+//        return "members/memberList";
+//    }
 
 //    @GetMapping(value = "/mandalart")
 //    public String mandalart(Model model) {

@@ -1,7 +1,9 @@
 package jpacalendarchallenge.jpacacha.domain.mandalart;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 
 @Entity
@@ -12,6 +14,8 @@ public class Cell {
 
     @Column(name = "`row`")
     private int row;
+
+    @Column(name = "`column`")
     private int column;
     private String content; // 셀의 내용
 
