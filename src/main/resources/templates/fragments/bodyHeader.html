@@ -29,6 +29,8 @@
         }
     </style>
     <a href="/" class="logo"></a>
+    <a th:if="${session.member != null}" th:href="@{/roulette/{id}(id=${session.member.id})}">룰렛</a>
+    <a th:if="${session.member == null}" href="#" onclick="alert('회원전용 이벤트입니다'); return false;">룰렛</a>
     <ul class="nav nav-pills">
         <li th:if="${session.member == null}"><a href="/login"><img src="/images/login2.png" alt="로그인" class="log-icon"></a></li>
         <li th:if="${session.member != null}"><a th:text="${session.member.name} + '님 환영합니다!'"></a></li>

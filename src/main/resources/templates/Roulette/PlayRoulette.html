@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header">
+    <meta charset="UTF-8">
+    <title>룰렛 게임</title>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="/css/calendar.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" rel="stylesheet">
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"></div>
+    <div class="jumbotron" style="height: 1150px;">
+        <h1>룰렛 게임</h1>
+        <div class="arrow"></div>
+        <div id="roulette">
+            <div class="section"></div>
+        </div>
+        <button class="start" onclick="checkAttendanceAndSpin()"></button>
+        <p id="result"></p>
+        <div class="calendar-container">
+            <div id="calendar" style="height: 500px;"></div>
+        </div>
+    </div>
+    <div th:replace="fragments/footer :: footer"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+<script>
+    const memberId = [[${session.member?.id}]]; // html 과 js 를 따로 구분해서 호출해서 사용하는경우 이렇게 해줘야 서버변수를 읽을수있음
+    console.log('memberId from Thymeleaf:', memberId); // memberId가 올바르게 설정되었는지 확인
+</script>
+<script src="/js/calendar.js"></script>
+<script src="/js/simple_test.js"></script>
+</body>
+</html>
