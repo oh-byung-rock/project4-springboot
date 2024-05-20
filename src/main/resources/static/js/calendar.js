@@ -39,7 +39,7 @@ function spin() {
             roulette.style.transform = `rotate(${finalRotation}deg)`;
 
             setTimeout(() => {
-                const data2 = { memberId: memberId, date: today, status: '8975' };
+                const data2 = { memberId: memberId, date: today, status: data.result };
                 fetch('/attendance', {
                     method: 'POST',
                     headers: {
@@ -70,7 +70,7 @@ $(document).ready(function() {
         editable: false,
         height: 'auto', // 스크롤바 안생기게 자동 높이 조정
         events: function(start, end, timezone, callback) {
-            fetch(`/test/attendance/${memberId}`)
+            fetch(`/attendance/all/${memberId}`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -82,7 +82,7 @@ $(document).ready(function() {
                     const events = data.map(attendance => ({
                         title: attendance.status,
                         start: attendance.date,
-                        color: attendance.status === '8975' ? 'green' : 'red'
+                        color: 'green'
                     }));
                     callback(events);
                 })
