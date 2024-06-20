@@ -49,6 +49,17 @@
  background-size: cover;
  background-position: center;
  }
+
+ .jumbotron2 {
+ text-align: center;
+ border-bottom: 1px solid #e5e5e5;
+ height: 1500px;
+ background-image: url('/images/calendarback.png');
+ background-repeat: no-repeat; /* 배경 이미지 반복 안 함 */
+ background-size: cover;
+ background-position: center;
+ }
+
  .jumbotron .btn {
  font-size: 21px;
  padding: 14px 24px;

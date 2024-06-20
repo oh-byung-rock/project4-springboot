@@ -32,4 +32,5 @@ public class Member {
 
     @OneToOne(mappedBy = "member") // Mandalart 엔티티의 member 필드를 참조
     private Mandalart mandalart;
+
 }
