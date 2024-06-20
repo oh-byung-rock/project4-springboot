@@ -10,8 +10,11 @@
 - 회원가입 기능 API 로 변경완료 (240512)
 - 상품수정 기능 API 로 변경완료 (240512)
 - 룰렛을 통한 출석체크 기능 구현 (240605)
-
+![출석1](https://github.com/oh-byung-rock/project4-springboot/assets/136219126/55836f63-ca55-4580-ab4d-2704b8488266)
   - 이용유저제한 (회원만 사용가능)
   - 하루 1번만 룰렛이용이 가능하도록 사용제한
   - 회원별 캘린터 구성
+![출석2](https://github.com/oh-byung-rock/project4-springboot/assets/136219126/87b85155-6ac9-4e5b-971a-d6d4171ce492)
+
+
  
